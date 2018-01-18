@@ -5,9 +5,11 @@
         .module('app')
         .controller('Main', main);
 
-    function main() {
+    function main(MainService) {
+
         var vm = this;
-        vm.food = 'pizza';
+        vm.food = MainService.getEmailTemplates();
+
     }
 
 })();
