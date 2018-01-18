@@ -21,7 +21,7 @@ namespace Modules.Business {
 	/// and performing basic tasks, such as saving new versions.  
 	/// Each EmailTemplate has a parent that acts as the primary record, and versions to view an audit trail and revision history.
 	/// </summary>
-	//[Serializable]
+	[Serializable]
 	public class EmailTemplate {
 
 		#region Object Constructors
