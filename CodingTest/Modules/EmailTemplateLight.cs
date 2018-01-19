@@ -343,17 +343,10 @@ namespace Modules.Business {
 				if (allTemplates == null) {
 					string fileName = ConfigurationManager.AppSettings["DataPath"].Replace("~", HostingEnvironment.ApplicationPhysicalPath).Replace("/", "\\");
 					XmlSerializer serializer = new XmlSerializer(typeof(EmailTemplates));
-
-                    using (FileStream fs = File.OpenRead(fileName))
-                    {
-                        allTemplates = (EmailTemplates)serializer.Deserialize(fs);
-                    }
-
-     //               FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-					//allTemplates = (EmailTemplates)serializer.Deserialize(fs);
-					//fs.Close();
-
-					HttpContext.Current.Cache.Insert("EmailTemplatesData", allTemplates, new CacheDependency(fileName));
+                    FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                    allTemplates = (EmailTemplates)serializer.Deserialize(fs);
+                    fs.Close();
+                    HttpContext.Current.Cache.Insert("EmailTemplatesData", allTemplates, new CacheDependency(fileName));
 				}
 				return allTemplates;
 			}

@@ -5,10 +5,17 @@
         .module('app')
         .controller('Main', main);
 
-    function main(MainService) {
-
+    function main(MainService, NgTableParams) {
+             
         var vm = this;
-        vm.food = MainService.getEmailTemplates();
+        MainService.getEmailTemplates().then(function () {
+            vm.tableParams = new NgTableParams({},
+                {
+                    dataset: MainService.data,
+                    counts: []
+                },
+            );
+        });
 
     }
 

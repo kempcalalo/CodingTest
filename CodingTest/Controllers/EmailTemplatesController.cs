@@ -17,7 +17,20 @@ namespace CodingTest.Controllers
         {
             try
             {
-                EmailTemplates viewModel = EmailTemplates.AllTemplates;
+                //EmailTemplates templates = new EmailTemplates();
+                //EmailTemplatePageCriteria criteria = new EmailTemplatePageCriteria();
+
+                //criteria.Active = true;
+                //criteria.EmailType = Modules.Config.EmailType.WelcomeEmail;
+                //criteria.Page = 1;
+                //criteria.PageSize = 10;
+                //criteria.SortBy = Modules.Config.EmailSortBy.EmailLabelAscending;
+
+                //templates.LoadCriteria(criteria);
+
+                //var viewModel = EmailTemplates.GetAll(Modules.Config.EmailSortBy.FromAddressAscending, 1, 10, true, Modules.Config.EmailType.WelcomeEmail);
+                var viewModel = EmailTemplates.AllTemplates;
+
 
                 return viewModel;
             }

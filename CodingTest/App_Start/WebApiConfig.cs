@@ -4,6 +4,7 @@ using System.Web.Http;
 using System.Collections.Generic;
 using System.Web.Http.Controllers;
 using System.Net.Http.Headers;
+using Newtonsoft.Json.Serialization;
 
 namespace CodingTest
 {
@@ -13,6 +14,7 @@ namespace CodingTest
         {
             config.MapHttpAttributeRoutes();
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new DefaultContractResolver { IgnoreSerializableAttribute = true };
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

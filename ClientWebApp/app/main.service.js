@@ -13,18 +13,21 @@
 
         function getEmailTemplates() {
 
-            var apiURL = 'http://localhost:4126/';
+            var apiUrl = 'http://localhost:4126/';
 
-            $http({
+            return $http({
                 method: 'GET',
                 url: apiUrl + 'api/EmailTemplates/',
             }).then(function (response) {
                 service.data = response.data;
-                });
+            }, function (error) {
+                console.log(error);
+            });
 
-            return service.data;
         }
         return service;
     }
+
+
 
 })();
